@@ -1,13 +1,21 @@
-.todo-app{
+.home .container-2 .todo-app .todo-list .buttons{
     display: flex;
+}
+
+.home {
+    margin-right: 50px;
     
 }
 
-.todo-app .todo-list{
-    display: flex;
-    
+.home .container-2 .todo-app .input input{
+    padding-right: 25px;
 }
-.hey{
+.home .container-2 .todo-app .todo-list .buttons p{
+    margin-right: 10px;
+}
+.kapsam{
     display: flex;
-    flex-direction: column;
+    width: 45%;
+    text-align: center;
+    margin:50px auto;
 }

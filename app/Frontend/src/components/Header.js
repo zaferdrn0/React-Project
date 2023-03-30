@@ -1,8 +1,10 @@
 import React from 'react'
 import "./Header.css"
 
-const Header = () => {
-  
+const Header = (props) => {
+    const  title  = props.title
+    const register = props.giris
+
   return (
     <header class="header">
         <div className='user-menu'>
@@ -16,11 +18,11 @@ const Header = () => {
                 </div>
                 <div className='header-right'>
                   <div className='buttons'>
-                    <a href='#'>Projects</a>
+                    <a href='#'></a>
                     <a href='#'>How It Works</a>
                     <a href='#'>Enterprise</a>
                     <a href='login'>Log In</a>
-                    <a className='sign-up' href='register'>Sign Up</a>
+                    <a className='sign-up' href={props.url}>{title}{register}</a>
                   </div>
                 </div>
             </div>

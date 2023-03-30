@@ -6,7 +6,7 @@ import "./css/Register.css"
 const Register = () => {
   return (
     <>
-    <div><Header/></div>
+    <div><Header giris= "Home" url ="/"/></div>
         <div className='register'>
             <div className='container'>
                 <div className='screen'>

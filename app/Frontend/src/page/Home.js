@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Header />
+        <Header title = "Sign Up" url ="register"/>
       </div>
-      <div>
+      <div className="kapsam"><div>
         <ToDo label="okul" />
       </div>
       <div>
@@ -16,7 +16,8 @@ const Home = () => {
       </div>
       <div>
         <ToDo label="gunluk" />
-      </div>
+      </div></div>
+      
       <div>
         <Footer />
       </div>

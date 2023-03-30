@@ -21,19 +21,19 @@ const ToDo = (props) => {
 
   return (
     <div className="home">
-      <div className="container">
+      <div className="container-2">
         <div className="todo-app">
+        <h2>{label}</h2>
           <div className="input">
-            <h2>{label}</h2>
             <input type="text" value={inpValue} onChange={InputChange} />
             <button onClick={addToDo}>Add To Do</button>
           </div>
           <div className="todo-list">
             {todo.map((to, i) => (
-              <>
-                <p key={i}>{to.text}</p>{" "}
-                <button onClick={() => deleteToDo(i)}>X</button>
-              </>
+              <div className="buttons"><p key={i}>{to.text}</p>{" "}
+              <button onClick={() => deleteToDo(i)}>X</button></div>
+                
+              
             ))}
           </div>
         </div>
