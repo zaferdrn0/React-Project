@@ -11,7 +11,7 @@ const Register = () => {
             <div className='container'>
                 <div className='screen'>
                     <div className='logo'>
-                        <img src='/images/logo.png'></img>
+                        <img src='/images/logo.png' alt=""></img>
                     </div>
                     <div className='input'>
                         <input type="text" placeholder='Username' />

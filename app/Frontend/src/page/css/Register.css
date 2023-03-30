@@ -12,12 +12,12 @@ body {
     margin-top: 40px;
     background: linear-gradient(90deg, #5D54A4, #7C78B8);
     position: relative;	
-	height: 600px;
-	width: 360px;	
+	height: 630px;
+	width: 430px;	
 	box-shadow: 0px 0px 24px #5C5696;
 }
 .register .container .screen{
-    margin-left: 20px;
+    margin-left: 35px;
     display: flex;
     flex-direction: column;
 }
@@ -31,9 +31,9 @@ body {
 .register .container .screen .input input{
     margin-bottom: 15px;background: linear-gradient(90deg, #2a2851, #39374d);	
     border:none;
-    width: 260px;
-    height: 35px;
-    padding-left: 10px;
+    width: 350px;
+    height: 40px;
+    padding-left: 25px;
     border-radius: 15px;
     color: white;    
 }
@@ -55,7 +55,8 @@ body {
 
 .login-btn{
     transition:200ms; 
-    margin-left: 90px;
+    margin-left: 110px;
+    align-items: center;
     
 }
 
@@ -70,12 +71,12 @@ body {
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 100%;
+	
 	color: #4C489D;
 	box-shadow: 0px 2px 2px #5C5696;
 	cursor: pointer;
 	transition: .2s;
-    padding-left: 30px;
+    text-align: center;
 }
 
 

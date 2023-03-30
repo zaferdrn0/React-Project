@@ -6,15 +6,15 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-import Product from "./page/Product";
 import Register from "./page/Register";
+import Login from "./page/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/login" element = {<Login/>}/>
         <Route path="/register" element = {<Register/>}/>
-        <Route path="/product" element = {<Product/>}/>
         <Route path="/" element ={<Home/>}/>
         
       </Routes>
