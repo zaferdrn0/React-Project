@@ -1,0 +1,87 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: Raleway, sans-serif;
+}
+body {
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+}
+
+.register .container{
+    margin-top: 40px;
+    background: linear-gradient(90deg, #5D54A4, #7C78B8);
+    position: relative;	
+	height: 600px;
+	width: 360px;	
+	box-shadow: 0px 0px 24px #5C5696;
+}
+.register .container .screen{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register .container .screen .input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    
+}
+.register .container .screen .input input{
+    margin-bottom: 15px;background: linear-gradient(90deg, #2a2851, #39374d);	
+    border:none;
+    width: 260px;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 15px;
+    color: white;    
+}
+.register .container .screen .input input::placeholder{
+    color:white;
+    
+}
+
+.register .container .screen .logo{
+    margin-bottom: 70px;
+    text-align: center;
+    margin-left: 35px;
+    margin-top: -100px;
+}
+.register .container .screen .logo img{
+    width: 240px;
+    border-radius: 70px;
+}
+
+.login-btn{
+    transition:200ms; 
+    margin-left: 90px;
+    
+}
+
+.login-btn button{
+    background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+    padding-left: 30px;
+}
+
+
+.login-btn:active,
+.login-btn:focus,
+.login-btn:hover {
+	border-color: #6A679E;
+	outline: none;
+}
