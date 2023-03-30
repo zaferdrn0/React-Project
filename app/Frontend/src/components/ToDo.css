@@ -1,0 +1,10 @@
+.todo-app{
+    display: flex;
+    
+}
+
+.todo-app .todo-list{
+    display: flex;
+    background-color: aqua;
+    flex-direction: column;
+}
