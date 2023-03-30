@@ -5,6 +5,9 @@
 
 .todo-app .todo-list{
     display: flex;
-    background-color: aqua;
+    
+}
+.hey{
+    display: flex;
     flex-direction: column;
 }
