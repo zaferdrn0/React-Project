@@ -8,7 +8,6 @@ const Product = () => {
   return (
     <div>
         <div><Header/></div>
-        
         <div></div>
         <a href='/'>Buna bas</a>
         <div><Footer/></div>

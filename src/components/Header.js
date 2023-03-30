@@ -9,7 +9,7 @@ const Header = () => {
             <div className='container'>
                 <div className='header-left'>
                     <div className='logo'>
-                      <a><img src='/images/logo.png'/></a>
+                      <a href='product'><img src='/images/logo.png'/></a>
                        
                     </div>
                    
@@ -20,7 +20,7 @@ const Header = () => {
                     <a href='#'>How It Works</a>
                     <a href='#'>Enterprise</a>
                     <a href='#'>Log In</a>
-                    <a className='sign-up' href='#'>Sign Up</a>
+                    <a className='sign-up' href='register'>Sign Up</a>
                   </div>
                 </div>
             </div>
