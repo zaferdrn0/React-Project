@@ -1,12 +1,27 @@
 import React from 'react'
+import "./Header.css"
 
 const Header = () => {
+  
   return (
     <header class="header">
         <div className='user-menu'>
             <div className='container'>
                 <div className='header-left'>
-                    <h1>Hey ben headerım</h1>
+                    <div className='logo'>
+                      <a><img src='/images/logo.png'/></a>
+                       
+                    </div>
+                   
+                </div>
+                <div className='header-right'>
+                  <div className='buttons'>
+                    <a href='#'>Projects</a>
+                    <a href='#'>How It Works</a>
+                    <a href='#'>Enterprise</a>
+                    <a href='#'>Log In</a>
+                    <a className='sign-up' href='#'>Sign Up</a>
+                  </div>
                 </div>
             </div>
         </div>
