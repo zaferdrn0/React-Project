@@ -18,7 +18,8 @@ const ToDo = (props) => {
       method: 'POST',
       
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ todo:todo})
+      body: JSON.stringify({ todo:todo}),
+      credentials: 'include',
     });
   
     const data = await response.json({

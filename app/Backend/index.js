@@ -35,12 +35,12 @@ app.options('*', cors({
 })) // include before other routes
 
 app.use(cors({
-  allowedHeaders: '*',
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  methods: '*',
-  origin: "http://localhost:3000"
-}))
-
+  exposedHeaders: ['set-cookie'],
+}));
 
 app.post("/register", async (req,res) =>{
   let username = req.body.username;
@@ -87,7 +87,7 @@ app.post("/login", async (req, res) => {
     .then((result) => {
       if (result) {
         if (email === result.email && password === result.password) {
-          req.session.User = result;
+          req.session.user = result
           console.log(req.session);
           let message = JSON.stringify({
             message: ".Basarıyla Giris Yaptınız.",
@@ -114,8 +114,8 @@ app.post("/login", async (req, res) => {
 
 app.post("/addtodo", async (req,res) =>{
   const todo = req.body.todo;
-  let email = req.session.User
-  console.log(email)
+  let user = req.session.user; // Retrieve user object from session
+  console.log(user);
 })
 
 
