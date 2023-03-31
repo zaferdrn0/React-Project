@@ -13,7 +13,7 @@ const Register = () => {
         console.log(email)
   const response = await fetch('http://localhost:3001/register', {
     method: 'POST',
-    mode: 'no-cors',
+    
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email:email, password:password, username:username })
   });

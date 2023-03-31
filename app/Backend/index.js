@@ -20,6 +20,19 @@ mongoose.connect("mongodb://localhost:27017/React")
 });
  */
 
+app.options('*', cors({
+  credentials: true,
+  methods: '*',
+  origin: "http://localhost:3000"
+})) // include before other routes
+
+app.use(cors({
+  allowedHeaders: '*',
+  credentials: true,
+  methods: '*',
+  origin: "http://localhost:3000"
+}))
+
 
 app.post("http://localhost:3001/register", async (req,res) =>{
   let username = req.body.username;
