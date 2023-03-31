@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ToDo.css";
 
 const ToDo = (props) => {
-  const { label } = props;
+  const  label  = props.label
 
   const [todo, setTodo] = useState([]);
   const [inpValue, setInpValue] = useState("");
@@ -10,9 +10,28 @@ const ToDo = (props) => {
   const InputChange = (event) => {
     setInpValue(event.target.value);
   };
-  const addToDo = (event) => {
-    setTodo([...todo, { text: inpValue }]);
+  const addToDo = async (event) => {
+   await setTodo([...todo, { label: props.label, text: inpValue }]);
     setInpValue("");
+
+    const response = await fetch('http://localhost:3001/addtodo', {
+      method: 'POST',
+      
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ todo:todo})
+    });
+  
+    const data = await response.json({
+     
+    }).then((data) => {
+      console.log(data)
+    })
+  
+    return data;
+
+
+
+    
   };
 
   const deleteToDo = (i) => {
@@ -30,7 +49,7 @@ const ToDo = (props) => {
           </div>
           <div className="todo-list">
             {todo.map((to, i) => (
-              <div className="buttons"><p key={i}>{to.text}</p>{" "}
+              <div key={i} className="buttons"><p >{to.text}</p> 
               <button onClick={() => deleteToDo(i)}>X</button></div>
                 
               
