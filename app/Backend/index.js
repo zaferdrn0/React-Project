@@ -112,6 +112,11 @@ app.post("/login", async (req, res) => {
     });
 });
 
+app.post("/addtodo", async (req,res) =>{
+  const todo = req.body.todo;
+  let email = req.session.User
+  console.log(email)
+})
 
 
 
