@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("")
 
     const userRegister = async (email,password,username) =>{
-        console.log(email)
+        
   const response = await fetch('http://localhost:3001/register', {
     method: 'POST',
     
@@ -18,7 +18,11 @@ const Register = () => {
     body: JSON.stringify({ email:email, password:password, username:username })
   });
 
-  const data = await response.json();
+  const data = await response.json({
+   
+  }).then((data) => {
+    console.log(data)
+  })
 
   return data;
     }
@@ -36,7 +40,7 @@ const Register = () => {
                     <div className='input'>
                         <input value={username} type="text" placeholder='Username' onChange={(event) =>setUsername(event.target.value)} />
                         <input value={email} type="text" placeholder='Email' onChange={(event) =>setEmail(event.target.value)}/>
-                        <input value={password} type="text" placeholder='Password' onChange={(event) =>setPassword(event.target.value)}/>
+                        <input value={password} type="password" placeholder='Password' onChange={(event) =>setPassword(event.target.value)}/>
                     </div>
 
                     <div className='login-btn'><button onClick={() => userRegister(email,password,username)}>REGISTER IN NOW</button></div>
