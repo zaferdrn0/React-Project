@@ -48,32 +48,33 @@ app.post("/register", async (req,res) =>{
   let password = req.body.password;
   console.log("calıstım")
 
-  await User.findOne({
-    email: email,
+ setTimeout(() =>{User.findOne({
+  email: email,
+})
+  .then((result) => {
+    if (result) {
+      let hataMesaji = JSON.stringify({
+        message: "Kullanıcı Mevcut",
+        data:"1"
+      });
+      return res.send(hataMesaji);
+    } else {
+      const yeniKullanici = new User({
+        username: username,
+        email: email,
+        password: password,
+      });
+      yeniKullanici.save();
+      let message = JSON.stringify({
+        message: ".Basariyla kayit oldunuz.",
+        data: "1"
+      });
+      return res.send(message);
+    }
   })
-    .then((result) => {
-      if (result) {
-        let hataMesaji = JSON.stringify({
-          message: "Kullanıcı Mevcut",
-        });
-        return res.send(hataMesaji);
-      } else {
-        const yeniKullanici = new User({
-          username: username,
-          email: email,
-          password: password,
-        });
-        yeniKullanici.save();
-        let message = JSON.stringify({
-          message: ".Basariyla kayit oldunuz.",
-          data: "1"
-        });
-        return res.send(message);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  .catch((error) => {
+    console.log(error);
+  });},5000) 
 })
 
 

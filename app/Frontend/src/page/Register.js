@@ -8,9 +8,12 @@ const Register = () => {
     const [email,setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [isdisabled,setIsDisabled] = useState(false)
 
     const userRegister = async (email,password,username) =>{
-        
+        setLoading(true)
+        setIsDisabled(true)
   const response = await fetch('http://localhost:3001/register', {
     method: 'POST',
     
@@ -21,7 +24,10 @@ const Register = () => {
   const data = await response.json({
    
   }).then((data) => {
-    console.log(data)
+     if(data.data === "1"){
+      setLoading(false)
+      setIsDisabled(true)
+     }
   })
 
   return data;
@@ -38,13 +44,14 @@ const Register = () => {
                         <img src='/images/logo.png' alt=""></img>
                     </div>
                     <div className='input'>
-                        <input value={username} type="text" placeholder='Username' onChange={(event) =>setUsername(event.target.value)} />
-                        <input value={email} type="text" placeholder='Email' onChange={(event) =>setEmail(event.target.value)}/>
-                        <input value={password} type="password" placeholder='Password' onChange={(event) =>setPassword(event.target.value)}/>
+                        <input disabled ={isdisabled} value={username} type="text" placeholder='Username' onChange={(event) =>setUsername(event.target.value)} />
+                        <input disabled ={isdisabled} value={email} type="text" placeholder='Email' onChange={(event) =>setEmail(event.target.value)}/>
+                        <input disabled ={isdisabled} value={password} type="password" placeholder='Password' onChange={(event) =>setPassword(event.target.value)}/>
+
                     </div>
 
-                    <div className='login-btn'><button onClick={() => userRegister(email,password,username)}>REGISTER IN NOW</button></div>
-
+                    <div className='login-btn'><button disabled ={isdisabled} onClick={() => userRegister(email,password,username)}>REGISTER IN NOW</button></div>
+                    {loading && <div>Loading...</div>}
                 </div>
 
                    
