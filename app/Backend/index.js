@@ -118,24 +118,30 @@ app.post("/login", async (req, res) => {
 
 app.post("/addtodo", async (req,res) =>{
   try{
-    let data = req.body.todo;
-    console.log(data);
+    let data = req.body.todo[0]
+    let bos = req.body.todo[0].text
+    console.log(bos);
     let email = req.session.user.email;
-    console.log(email);
     let userr = await User.findOne({ email: email});
     if(userr){
-     if(userr.todo === [])
-      userr.todo.push(...data);
+      if(bos === ""){
+        console.log("ben bosum")
+      }
+    else{
+      userr.todo.push(data);
       console.log("girdim")
       await userr.save();
 
       console.log("Todo list updated successfully.");
-      res.sendStatus(200);
-    
-    } 
-    else{
-     
+      return res.send(userr.todo)
     }
+      
+    
+    
+      
+      
+  
+  }
   }
   catch(err){
     console.error(err);

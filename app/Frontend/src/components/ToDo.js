@@ -11,7 +11,7 @@ const ToDo = (props) => {
     setInpValue(event.target.value);
   };
   const addToDo =  (event) => {
-   setTodo([...todo, {text: inpValue }]);
+   setTodo([{text: inpValue }]);
     setInpValue("");
   };
 
