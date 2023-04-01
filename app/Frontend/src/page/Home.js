@@ -8,15 +8,10 @@ const Home = () => {
       <div>
         <Header title = "Sign Up" url ="register"/>
       </div>
-      <div className="kapsam"><div>
-        <ToDo label="okul" />
+    <div>
+        <ToDo label="To Do App" />
       </div>
-      <div>
-        <ToDo label="is" />
-      </div>
-      <div>
-        <ToDo label="gunluk" />
-      </div></div>
+     
       
       <div>
         <Footer />

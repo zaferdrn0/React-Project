@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ToDo.css";
 
 const ToDo = (props) => {
@@ -11,29 +11,30 @@ const ToDo = (props) => {
     setInpValue(event.target.value);
   };
   const addToDo = async (event) => {
-   await setTodo([...todo, { label: props.label, text: inpValue }]);
+   await setTodo([...todo, {text: inpValue }]);
     setInpValue("");
-
-    const response = await fetch('http://localhost:3001/addtodo', {
-      method: 'POST',
-      
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ todo:todo}),
-      credentials: 'include',
-    });
-  
-    const data = await response.json({
-     
-    }).then((data) => {
-      console.log(data)
-    })
-  
-    return data;
-
-
-
-    
   };
+
+  useEffect(() => {
+    const sendToDo = async () => {
+      const response = await fetch("http://localhost:3001/addtodo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ todo: todo }),
+        credentials: "include",
+      });
+  
+      const data = await response.json();
+      console.log(data);
+    };
+  
+    sendToDo();
+  }, [todo]);
+
+
+  
+    
+
 
   const deleteToDo = (i) => {
     setTodo(todo.filter((_, index) => index !== i));
@@ -51,7 +52,10 @@ const ToDo = (props) => {
           <div className="todo-list">
             {todo.map((to, i) => (
               <div key={i} className="buttons"><p >{to.text}</p> 
-              <button onClick={() => deleteToDo(i)}>X</button></div>
+              <div className="edit"><button onClick={() => deleteToDo(i)}>Edit</button>
+              <button onClick={() => deleteToDo(i)}>Delete</button></div>
+              
+              </div>
                 
               
             ))}

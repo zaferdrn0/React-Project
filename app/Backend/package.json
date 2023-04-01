@@ -16,6 +16,7 @@
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "mongodb": "^5.1.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22"
   }
 }

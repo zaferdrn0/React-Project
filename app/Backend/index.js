@@ -113,10 +113,23 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/addtodo", async (req,res) =>{
-  const todo = req.body.todo;
-  let user = req.session.user; // Retrieve user object from session
-  console.log(user);
-})
+  try{
+    let data = req.body.todo
+    console.log(data)
+      let email = req.session.user.email;
+    let userr = await User.findOne({ email: email});
+    if(userr){
+      userr.todo.push(data)
+      userr.save();
+      
+    } 
+  }
+  catch{
+
+  }
+  
+}); 
+
 
 
 
