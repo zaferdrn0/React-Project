@@ -6,6 +6,7 @@ const ToDo = (props) => {
 
   const [todo, setTodo] = useState([]);
   const [inpValue, setInpValue] = useState("");
+  const [writeData, setWriteData] = useState([])
 
   const InputChange = (event) => {
     setInpValue(event.target.value);
@@ -26,12 +27,13 @@ const ToDo = (props) => {
   
       const data = await response.json();
       console.log(data);
+      setWriteData(data)
     };
   
     sendToDo();
   }, [todo]);
 
-
+  console.log(writeData[0])
   
     
 
@@ -50,7 +52,7 @@ const ToDo = (props) => {
             <button onClick={addToDo}>Add To Do</button>
           </div>
           <div className="todo-list">
-            {todo.map((to, i) => (
+            {writeData.map((to, i) => (
               <div key={i} className="buttons"><p >{to.text}</p> 
               <div className="edit"><button onClick={() => deleteToDo(i)}>Edit</button>
               <button onClick={() => deleteToDo(i)}>Delete</button></div>
