@@ -10,8 +10,8 @@ const ToDo = (props) => {
   const InputChange = (event) => {
     setInpValue(event.target.value);
   };
-  const addToDo = async (event) => {
-   await setTodo([...todo, {text: inpValue }]);
+  const addToDo =  (event) => {
+   setTodo([...todo, {text: inpValue }]);
     setInpValue("");
   };
 

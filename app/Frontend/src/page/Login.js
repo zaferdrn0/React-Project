@@ -5,12 +5,15 @@ import "./css/Register.css"
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const userLogin = async (email,password) =>{
+      setLoading(true)
+      setIsDisabled(true)
         
   const response = await fetch('http://localhost:3001/login', {
     method: 'POST',
-    
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email:email, password:password }),
     credentials: 'include',
@@ -19,10 +22,17 @@ const Login = () => {
   const data = await response.json({
    
   }).then((data) => {
-    console.log(data)
+    if(data.data ==="1"){
+      setLoading(false)
+      setIsDisabled(false)
+    }
   })
 
   return data;
+    }
+
+    if(loading === true){
+      
     }
 
 
@@ -38,12 +48,12 @@ const Login = () => {
                         <img src='/images/logo.png' alt=""></img>
                     </div>
                     <div className='input'>
-                        <input value={email} type="text" placeholder='Email' onChange={(event) =>setEmail(event.target.value)} />
-                        <input value={password} type="password" placeholder='Password' onChange={(event) => setPassword(event.target.value)} />
+                        <input disabled={isDisabled} value={email} type="text" placeholder='Email' onChange={(event) =>setEmail(event.target.value)} />
+                        <input disabled={isDisabled} value={password} type="password" placeholder='Password' onChange={(event) => setPassword(event.target.value)} />
                     </div>
 
-                    <div className='login-btn'><button onClick={() =>userLogin(email,password)}>LOGIN NOW</button></div>
-
+                    <div className='login-btn'><button disabled={isDisabled} onClick={() =>userLogin(email,password)}>LOGIN NOW</button></div>
+                    {loading && <div>Loading...</div>}
                 </div>
 
                    

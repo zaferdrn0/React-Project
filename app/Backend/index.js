@@ -80,29 +80,31 @@ app.post("/register", async (req,res) =>{
 app.post("/login", async (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
-
-  await User.findOne({
-    email: email,
-  })
-    .then((result) => {
+  setTimeout(() =>{  User.findOne({
+      email: email,
+    }).then((result) => {
       if (result) {
         if (email === result.email && password === result.password) {
-          req.session.user = result
+            req.session.user = result
           console.log(req.session);
           let message = JSON.stringify({
             message: ".Basarıyla Giris Yaptınız.",
             yonlendir: "/",
+            data:"1",
           });
+          
           return res.send(message);
         } else {
           let hataMesaji = JSON.stringify({
             message: ".Sifre yanlis.",
+            data:"1",
           });
           return res.send(hataMesaji);
         }
       } else {
         let hataMesaji = JSON.stringify({
           message: ".Eposta Adresi Kayıtlı Degil.",
+          data:"1",
         });
         return res.send(hataMesaji);
       }
@@ -110,22 +112,33 @@ app.post("/login", async (req, res) => {
     .catch((error) => {
       console.log(error);
     });
+  },5000)
 });
 
 app.post("/addtodo", async (req,res) =>{
   try{
-    let data = req.body.todo
-    console.log(data)
-      let email = req.session.user.email;
+    let data = req.body.todo;
+    console.log(data);
+    let email = req.session.user.email;
+    console.log(email);
     let userr = await User.findOne({ email: email});
     if(userr){
-      userr.todo.push(data)
-      userr.save();
-      
-    } 
-  }
-  catch{
+     if(userr.todo === [])
+      userr.todo.push(...data);
+      console.log("girdim")
+      await userr.save();
 
+      console.log("Todo list updated successfully.");
+      res.sendStatus(200);
+    
+    } 
+    else{
+     
+    }
+  }
+  catch(err){
+    console.error(err);
+    res.sendStatus(500);
   }
   
 }); 
