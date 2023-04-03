@@ -9,6 +9,16 @@ import {
 import Register from "./page/Register";
 import Login from "./page/Login";
 
+fetch("http://localhost:3001/deleteToDo", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status === 200) {
+        
+      }
+    });
+
 function App() {
   return (
     <BrowserRouter>

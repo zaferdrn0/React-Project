@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "./css/Register.css";
+import { useNavigate, Link } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const userLogin = async (email, password) => {
     setLoading(true);
@@ -27,6 +29,10 @@ const Login = () => {
         setLoading(false);
         setIsDisabled(false);
       }
+      if(data.giris === "1"){
+        console.log("girdim")
+        navigate('/')
+      }
     });
 
     return data;
@@ -38,7 +44,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <Header giris="Home" url="/" />
+        <Header giris="Register" url="/register" />
       </div>
       <div className="register">
         <div className="container">
@@ -77,7 +83,7 @@ const Login = () => {
       <div>
         <Footer />
       </div>
-    </>
+      </>
   );
 };
 

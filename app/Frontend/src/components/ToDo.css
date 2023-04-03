@@ -1,27 +1,31 @@
+
+.todo{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.home{
+    width: 500px;
+    height: 560px;
+    background: linear-gradient(90deg, #3fa7ce, #6bcca0);	
+    text-align: center;	
+    padding-top: 20px;
+    margin-left: 15px;
+    border-radius: 10px;
+    
+}
+
 .home .container-2{
-    position: absolute;
-    top: 0;
-    bottom:200px;
-    left: 0;
-    right: 0;
-    width: 50%;
-    height: 50%;
-    margin: auto;
+    height: 470px;
+    
 }
 
 .home .container-2 .todo-app{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    margin: auto;
-    text-align: center;
-    padding-top: 15px;
-    background: linear-gradient(90deg, #1aa994, #2ba940);	
-    border-radius: 15px;	
+   height: 450px;
+   overflow: auto;
 }
+
 .home .container-2 .todo-app .input{
     align-items: center;
     display: flex;
@@ -56,12 +60,15 @@
     padding-right: 40px;
     display: flex;
     flex-direction: column;
-    height: 75%;
-    overflow: auto;
+   height: 450px;
+    
+   
+    
 }
 
 .home .container-2 .todo-app .todo-list .buttons{
     display: flex;
+    justify-content: space-between ;
     background-color: #2957ad;
     margin-bottom: 10px;
     height: 40px;
@@ -70,6 +77,7 @@
     align-items: center;
     justify-content: space-between;
     padding-left: 15px;
+    color: white;
     
 }
 .home .container-2 .todo-app .todo-list .buttons .edit{

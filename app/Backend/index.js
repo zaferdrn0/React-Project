@@ -92,6 +92,7 @@ app.post("/login", async (req, res) => {
             message: ".Basarıyla Giris Yaptınız.",
             yonlendir: "/",
             data:"1",
+            giris: "1",
           });
           
           return res.send(message);
@@ -99,6 +100,7 @@ app.post("/login", async (req, res) => {
           let hataMesaji = JSON.stringify({
             message: ".Sifre yanlis.",
             data:"1",
+            
           });
           return res.send(hataMesaji);
         }
@@ -116,7 +118,36 @@ app.post("/login", async (req, res) => {
   },5000)
 });
 
-app.post("/addtodo", async (req,res) =>{
+app.get("/getTodo", async (req, res) => {
+  try{ let user = await User.findOne({ email: req.session.user.email});
+  return res.send(user.todo);
+}catch{}
+ 
+});
+
+app.post('/createTodo', async (req, res) => {
+
+  let user = await User.findOne({ email: req.session.user.email});
+  user.todo.push({
+    baslik: req.body.baslik,
+    todoList: []
+  });
+  await user.save();
+  
+  return res.status(200).send();
+});
+
+app.post("/addTodo", async (req, res) => {
+  let user = await User.findOne({ email: req.session.user.email});
+  let index = user.todo.findIndex(elem => elem.baslik == req.body.baslik)
+  
+  user.todo[index].todoList.push(req.body.todo);
+  await user.save();
+  
+  return res.status(200).send();
+})
+
+app.post("/addtodo123123", async (req,res) =>{
   try{
     if(req.session.user === undefined){
       console.log("user yok")
@@ -154,11 +185,38 @@ app.post("/addtodo", async (req,res) =>{
   
 }); 
 
+app.post("/deleteCategory", async (req,res) =>{
+  let user = await User.findOne({ email: req.session.user.email});
+  let index = user.todo.findIndex(elem => elem.baslik == req.body.baslik)
+  console.log(index)
+  if (index !== -1) {
+    user.todo.splice(index, 1);
+  }
+  user.save()
+})
+
+app.post("/deleteToDo", async (req,res)=>{
+  let user = await User.findOne({ email: req.session.user.email});
+  console.log(req.body.todo)
+  let baslik = user.todo.findIndex(elem => elem.baslik == req.body.baslik)
+  let index = user.todo[baslik].todoList.findIndex(elem => elem.todoList == req.body.todo)
+  if (index !== -1) {
+    user.todo[baslik].todoList.splice(index, 1);
+  }
+  user.save()
+})
 
 
 
-
-
+app.post("/cikisYapp", async (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log("hatali");
+    }
+    res.clearCookie("connect.sid");
+    return res.send(JSON.stringify({data:"1" }));
+  });
+});
 
 console.log("server calısıyor")
 server.listen(3001, () => {
