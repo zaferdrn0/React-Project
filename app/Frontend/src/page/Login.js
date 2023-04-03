@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "./css/Register.css";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,9 +29,9 @@ const Login = () => {
         setLoading(false);
         setIsDisabled(false);
       }
-      if(data.giris === "1"){
-        console.log("girdim")
-        navigate('/')
+      if (data.giris === "1") {
+        console.log("girdim");
+        navigate("/");
       }
     });
 
@@ -66,6 +66,11 @@ const Login = () => {
                 type="password"
                 placeholder="Password"
                 onChange={(event) => setPassword(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    console.log("entere bastin");
+                  }
+                }}
               />
             </div>
             <div className="login-btn">
@@ -76,14 +81,18 @@ const Login = () => {
                 LOGIN NOW
               </button>
             </div>
-            {loading && <div>Loading...</div>} <div><br></br>{message}</div>
+            {loading && <div>Loading...</div>}{" "}
+            <div>
+              <br></br>
+              {message}
+            </div>
           </div>
         </div>
       </div>
       <div>
         <Footer />
       </div>
-      </>
+    </>
   );
 };
 

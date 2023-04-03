@@ -34,15 +34,24 @@ const Home = () => {
 
   function addTodo(baslik, todo) {
     setTodos((prev) => {
-      let ToReturn =  [...prev];
+      let ToReturn = [...prev];
       let index = ToReturn.findIndex((todo) => todo.baslik === baslik);
       ToReturn[index].todoList.push(todo);
       return ToReturn;
     });
   }
 
-  
-
+  function deleteTodo(baslik, todo) {
+    setTodos((prev) => {
+      let ToReturn = [...prev];
+      let index = ToReturn.findIndex((todo) => todo.baslik === baslik);
+      ToReturn[index].todoList.splice(
+        ToReturn[index].todoList.indexOf(todo),
+        1
+      );
+      return ToReturn;
+    });
+  }
 
   return (
     <div>
@@ -59,7 +68,15 @@ const Home = () => {
       </div>
       <div className="todo">
         {todos.map((todo, index) => {
-          return <ToDo key={index} todoObj={todo} addTodoProps={addTodo}/>;
+          return (
+            <ToDo
+              key={index}
+              todoObj={todo}
+              addTodoProps={addTodo}
+              deleteTodoProps={deleteTodo}
+              cagirBeni={setTodos}
+            />
+          );
         })}
       </div>
 
